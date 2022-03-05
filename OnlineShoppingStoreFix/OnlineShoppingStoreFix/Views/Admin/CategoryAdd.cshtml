@@ -1,0 +1,46 @@
+﻿@model OnlineShoppingStoreFix.DAL.Tbl_Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">Categories</li>
+    <li class="breadcrumb-item active">Add New Category</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Add New Category
+
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("CategoryAdd", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.CategoryId)
+            <div class="form-group">
+                <label class="control-label">Category Name</label>
+                @Html.TextAreaFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Enter category name", required = "required", autofocus = "autofocus", style = "margin:20px;position:relative;right:20px" })
+                @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label">Is Active</label>
+                @Html.CheckBox("IsActive")
+
+            </div>
+
+
+
+
+
+
+
+            <a onclick="window.history.back();" class="btn btn-danger" style="margin-top:10px">Cancel</a>
+            @Html.HiddenFor(m => m.CategoryId);
+            <input type="submit" class="btn btn-primary" value="Save" style="margin-top:10px" />
+        }
+    </div>
+</div>
+

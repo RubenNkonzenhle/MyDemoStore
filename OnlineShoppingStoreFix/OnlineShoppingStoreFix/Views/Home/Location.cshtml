@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 700px;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<h2>Location</h2>
+<div class="row">
+    <div id="map"></div>
+    <script>
+        let map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -29.774840, lng: 30.968490 },
+                zoom: 15,
+            });
+
+            const marker = new google.maps.Marker({
+                position: { lat: -29.774840, lng: 30.968490 },
+                map: map,
+            });
+        }
+    </script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK2MZ8Su6SKy-zU_a20h7qb_e_9btSLKE&callback=initMap&v=weekly"
+            async> </script>
+    <a href="#">52 KingKlip Avenue, Newlands East</a>
+</div>
+
